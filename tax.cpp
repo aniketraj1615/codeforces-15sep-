@@ -16,29 +16,23 @@ int main()
 {
     long long int n;
     cin >> n;
-int long long s1=0;
-    long long int ans = 0;
-    long long int copy = n;
-    while (copy && n)
-    {
-        
-        if (isPrime(copy))
-        {
-            if(n-copy==1){
-                copy--;
-            }
-           else{ n = n - copy;
-
-            copy = n;
-            ans++;}
+if(isPrime(n)){
+    cout<<"1"<<endl;
+}
+else{
+    if(n%2==0){
+        cout<<"2"<<endl;
+    }
+    else{
+        if(isPrime(n-2)){
+            cout<<"2"<<endl;
         }
-        else
-        {
-s1++;
-            copy--;
+        else{
+            cout<<"3"<<endl;
         }
     }
-   
-    cout << ans  << endl;
-    
+
+}
+
+    return 0;
 }
