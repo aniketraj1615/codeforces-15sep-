@@ -4,22 +4,22 @@ int main(){
     int n,m;
     cin>>n;
     int arr[n];
-    for(int i=0;i<n;i++){
+    int h[100001]={0};
+
+    for(int i=1;i<=n;i++){
         cin>>arr[i];
+        h[arr[i]]=i;
     }
     cin>>m;
-    int brr[m];
+    int static left=0;
+     int static right=0;
+    int mrr[m];
     for(int i=0;i<m;i++){
-        cin>>arr[i];
+        cin>>mrr[i];
+        left+=h[mrr[i]];
+        right+=n-h[mrr[i]]+1;
     }
-    int s=0;
-    for(int j=0;j<m;j++){
-        for(int i=0;i<n;i++){
-            if(brr[j]==arr[i]){
-
-            }
-        }
-    }
-
+   
+    cout<<left<<" "<<right<<endl;
     return 0;
 }

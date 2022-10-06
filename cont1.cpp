@@ -1,44 +1,63 @@
+
 #include<bits/stdc++.h>
 using namespace std;
-int main(){
-    int t;
-    cin>>t;
-    while(t--){
-        int n,k;
-        cin>>n>>k;
-        int arr[n];
-        for(int i=0;i<n;i++){
-            cin>>arr[i];
+int main()
+{
+
+    long int i,j,f,n,m,x,p,fnd;
+    string s;
+    while(getline(cin,s))
+    {
+        f=0;
+        for(i=0; i<s.size(); i++)
+        {
+            if(s[i]=='A'&&s[i+1]=='B')
+            {
+                fnd=i;
+                p=1;
+                break;
+            }
         }
-        cout<<"aniker"<<endl;
-        for(int i=0;i<n;i++){
-            cout<<"a!!!!!!!!!!!!!!!!"<<endl;
-            for(int j=i+1;j<n;j++){
-                cout<<"b!!!!!!!!!!"<<endl;
-                if((i+1)%k==(j+1)%k){
-                    int t=arr[i];
-                    arr[i]=arr[j];
-                    arr[j]=t;
-                   
+        if(p==1)
+        {
+            for(j=fnd+2; j<s.size(); j++)
+            {
+                if(s[j]=='B'&&s[j+1]=='A')
+                {
+                    f=1;
+                    break;
                 }
             }
         }
-        int sum=0;
-        
-        for(int i=0;i<n;i++){
-            cout<<"loop 1"<<endl;
-            int a=0;
-for(int j=i;j<k;j++){
-    cout<<"loop two"<<endl;
-    a=a+arr[j];
-}
-sum=max(sum,a);
 
-}
-cout<<"answerr"<<endl;
-        cout<<sum<<endl;
+        if(f==0)
+        {
+            for(i=0; i<s.size(); i++)
+            {
+                if(s[i]=='B'&&s[i+1]=='A')
+                {
+                    fnd=i;
+                    p=2;
+                    break;
+                }
+            }
+            if(p==2)
+            {
+                for(j=fnd+2; j<s.size(); j++)
+                {
+                    if(s[j]=='A'&&s[j+1]=='B')
+                    {
+                        f=1;
+                        break;
+                    }
+                }
+            }
         }
-        
-    
-return 0;
+        if(f==1)
+            cout<<"YES\n";
+        else
+            cout<<"NO\n";
+    }
+
+    return 0;
 }

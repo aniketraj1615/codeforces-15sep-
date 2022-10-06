@@ -3,49 +3,27 @@ using namespace std;
 int main(){
     int n,m;
     cin>>n>>m;
-    int arr[n];
+    int vect[n];
     for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    int flage=0;
-    int mx=arr[0];
-    int ans=0;
-    for(int i=0;i<n;i++){
-        if(arr[i]>m){
-            flage=1;
-        }
-        if(arr[i]>mx){
-            mx=arr[i];
-            ans=i;
-        }
+        cin>>vect[i];
 
     }
-    
-    
+    int index;
+   while(1){
+    int count=0;
     for(int i=0;i<n;i++){
-        if(m>arr[i]){
-            arr[i]=0;
+        if(vect[i]>0){
+count++;
+vect[i]=vect[i]-m;
+index=i;
         }
-        else{
-            arr[i]=arr[i]-m;
-        }
     }
-    
-    if(flage==0){
-        cout<<n<<endl;
+    if(count==0){
+        break;
     }
-    else{
-int i=0;
-while(arr[i]>=0){
-    arr[i]=arr[i]-m;
-    i=(i+1)%n;
-   
-}
-cout<<i<<endl;
-for(int j=0;j<n;j++){
-    cout<<arr[j]<< " ";
-}
-    }
-
+   }
+cout<<index+1<<endl;
 return 0;
+
+
 }

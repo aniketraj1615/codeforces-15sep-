@@ -6,26 +6,15 @@ int main(){
     int arr[n];
     int sum=0;
     for(int i=0;i<n;i++){
-        cin>>arr[i];
-        sum+=arr[i];
+cin>>arr[i];
+sum+=arr[i];
     }
-    n=n+1;
-    if(n%2==0){
-        if(sum%2==0){
-cout<<"3"<<endl;
-        }
-        else{
-            cout<<"2"<<endl;
+    int ans=0;
+    for(int i=1;i<=5;i++){
+        if((sum+i)%(n+1)==1){
+ans++;
         }
     }
-    else{
-        if(sum%2==0){
-            cout<<"2"<<endl;
-        }
-        else{
-            cout<<"3"<<endl;
-        }
-    }
-    
+    cout<<(5-ans)<<endl;
 return 0;
 }
