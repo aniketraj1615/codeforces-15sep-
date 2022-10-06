@@ -1,48 +1,69 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int main(){
+int main()
+{
     int n;
-    cin>>n;
+    cin >> n;
     int arr[n];
-   long long int z=0,f=0;
-   for(int i=0;i<n;i++){
-    cin>>arr[i];
-    arr[i]==5?f++:z++;
-   }
-   
-   long long int a=5*f;
-   long long int b=f/9;
-   if(b==0&&z==0){
-    cout<<"-1"<<endl;
-   }
-   else{
-   b=b*45;
-   if(a==b){
-    while(b){
-        cout<<"5";
-        b=b-5;
+    long long int k = 0, z = 0, f = 0;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+        arr[i] == 5 ? f++ : z++;
     }
-    z=z-1;
-    while(z--){
-        cout<<"0";
+    k = f;
+
+    f = (f / 9) * 9;
+
+    if (z == 0)
+    {
+
+        cout << "-1";
     }
-   }
-   else{
-    if(b==0){
-        cout<<"0"<<endl;
+    else if (f == 0 && z != 0)
+    {
+
+        cout << "0";
     }
-    else{
-    while(b){
-        cout<<"5";
-        b=b-5;
+    else if (f)
+    {
+        long long p = f;
+
+        while (f--)
+        {
+
+            cout << "5";
+        }
+         while (z--)
+            {
+
+                cout << "0";
+            }
+        // if (p == k)
+        // {
+        //     z = z - 1;
+           
+        //     while (z--)
+        //     {
+
+        //         cout << "0";
+        //     }
+        // }
+        // else
+        // {
+
+        //     while (z--)
+        //     {
+
+        //         cout << "0";
+        //     }
+        // }
+    }
+    else if (f == 0)
+    {
+
+        cout << "0";
     }
     
-    while(z--){
-        cout<<"0";
-    }
-    }
-   }
-   }
-
-return 0;
+    return 0;
 }
