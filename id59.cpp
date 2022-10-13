@@ -3,34 +3,38 @@ using namespace std;
 int main(){
     int n,m;
     cin>>n>>m;
+    int copy=n;
     int arr[m];
+    int brr[m];
     for(int i=0;i<m;i++){
         cin>>arr[i];
+        brr[i]=arr[i];
     } 
+    
 sort(arr,arr+n);
-int mx=0,min=0;
-for(int i=0;i<m&&n!=0;i++){
-if(n<=arr[i]){
-    int a=arr[i]-n;
-     min+=(n*(n+1))/2-(a*(a+1))/2;
-    break;
+sort(brr,brr+n);
+int mx=0,minn=0;
+for(int i=0;i<m;i++){
+while(arr[i]!=0&&n!=0){
+    minn+=arr[i];
+    n--;
+    arr[i]=arr[i]-1;
 }
-else{
-    min+=(arr[i]*(arr[i]+1))/2;
-    n=n-arr[i];
+n=copy;
+
 }
+int j=m-1;
+while(n--){
+    cout<<"max"<<endl;
+mx+=brr[j];
+brr[j]=brr[j]-1;
+if(j==0){
+    j=m-1;
 }
-for(int i=m-1;i>=0&&n!=0;i--){
-if(n<=arr[i]){
-    int a=arr[i]-n;
-     mx+=(n*(n+1))/2-(a*(a+1))/2;
-    break;
+
+
+
 }
-else{
-    mx+=(arr[i]*(arr[i]+1))/2;
-    n=n-arr[i];
-}
-}
-cout<<mx<<"   "<<min<<endl;
+cout<<mx<<"   "<<minn<<endl;
 return 0;
 }
