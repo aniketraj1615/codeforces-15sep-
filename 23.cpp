@@ -11,7 +11,7 @@ if(s[i]!=s[i+1]){
 
 }
     }
-    if(count%2==0){
+    if(count%2!=0){
         cout<<"CHAT WITH HER!"<<endl;
 
     }
