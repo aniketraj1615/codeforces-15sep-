@@ -10,52 +10,45 @@ int main()
 		ll n, q;
 		cin >> n >> q;
 		ll arr[n];
+		ll max_arr[n];
+		ll sum_arr[n];
 		ll qrr[q];
 		ll mx = 0;
-		ll minn = 0;
+		// ll minn = 0;
 		ll total = 0;
 		for (ll i = 0; i < n; i++)
 		{
 			cin >> arr[i];
-			mx = max(mx, arr[i]);
-			minn = min(minn, arr[i]);
 			total += arr[i];
+			mx = max(mx, arr[i]);
+			max_arr[i] = mx;
+			sum_arr[i] = total;
 		}
-		// cout<<"max :"<<mx<<endl;
-		// cout<<"total :"<<total<<endl;
+
 		for (ll j = 0; j < q; j++)
 		{
 			cin >> qrr[j];
 		}
-		ll ans;
-		for (ll i = 0; i < q; i++)
+
+		for (ll j = 0; j < q; j++)
 		{
-			// cout<<"element :"<<qrr[i]<<endl;
-			ans = 0;
-			if (qrr[i] >= mx)
+			ll ind = -1;
+			if (qrr[j] >= max_arr[0])
 			{
-				cout << total << " ";
-				continue;
+				ind = (upper_bound(max_arr, max_arr + n, qrr[j]) - max_arr);
 			}
 
+			if (ind == -1)
+			{
+				cout << "0"
+					 << " ";
+			}
 			else
 			{
-				for (ll j = 0; j < n; j++)
-				{
-					if (qrr[i] >= arr[j])
-					{
-						ans += arr[j];
-					}
-					else
-					{
-						cout << ans << " ";
-						break;
-					}
-				}
+				cout << sum_arr[ind - 1] << " ";
 			}
 		}
 		cout << endl;
-		// cout<<"over "<<endl;
 	}
 	return 0;
 }
